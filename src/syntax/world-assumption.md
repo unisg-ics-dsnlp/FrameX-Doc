@@ -1,17 +1,40 @@
 # World Assumption
 
-Every complete FrameX program starts with a world declaration:
+Every complete FrameX program must explicitly declare `world open.` or
+`world closed.`. There is no implicit default.
 
-```prolog
-// Step 1: declare the world assumption —
-// open means "not stated" is unknown, not false.
+```framex
+// The declaration is mandatory — silence about the world is not allowed.
 world open.
 ```
 
-This single line fixes how the engine treats **missing information**: as
-`unknown` (open world) rather than `false` (closed world). The rest of this
-page explains the two assumptions in general and what `world open.` means
-concretely in FrameX.
+To use it correctly, keep three things strictly apart: the **world
+assumption**, a **stored Boolean value**, and the **truth value of a query**.
+Confusing any two of them is the most common modeling mistake.
+
+## Three different things
+
+**1. The world assumption** says what silence means — how the engine treats
+a statement it can neither support nor refute:
+
+- Under `world open.`, an unsupported statement normally remains `unknown`.
+  A named closure declaration can make a specific class, slot or method
+  complete (for example, `closed slot reviewed.`).
+- Under `world closed.`, statements that cannot be established are treated
+  as `false`.
+
+**2. A stored Boolean value is ordinary data.** Writing
+`rob[hasJob -> false].` asserts that the `hasJob` property has the value
+`false`, the same way `reserve[configurationRevision -> 4].` asserts a
+number. It is not logical negation: it does not by itself make anything
+`false` at the query level.
+
+**3. The truth value of a query** (`true`, `false` or `unknown`) is the
+engine's answer about one asked statement under the program's assumptions.
+`true` means supported under the program. `false` means refuted under its
+closed-scope semantics. `unknown` means the program cannot settle the
+statement. `expect unknown` checks that last outcome; it does not assert a
+negative fact.
 
 ## The general concept
 
@@ -32,54 +55,32 @@ databases and logic programming:
   [Raymond Reiter](https://en.wikipedia.org/wiki/Closed-world_assumption).
 
 Neither is "correct" in the abstract — it is a modelling choice about what
-silence means.
+silence means. FrameX forces you to state the choice up front.
 
-## What `world open.` means in FrameX
-
-FrameX programs declare `world open.`, i.e. the open-world assumption holds
-by default:
-
-- A fact that is stated (or derived) is `true`.
-- An explicitly refuted statement is `false` (e.g. `primary` is explicitly
-  unhealthy).
-- Everything else is `unknown` — for example, the health of `reserve`, about
-  which no statement exists.
-
-Consequences that follow directly:
-
-1. **Deleting a negative fact yields `unknown`, not `true`.** Removing
-   `reserve[health -> false]` does not make the reserve healthy; it makes its
-   health unknown.
-2. **An alias match establishes nothing.** Two objects may share a display
-   name (the `cars::jaguar` / `animals::jaguar` case), and asking about one in
-   place of the other answers `unknown` rather than guessing.
-3. **A missing output of your implementation is a defect**, not an encoding
-   of `unknown`. Distinguish "the engine answered `unknown`" from "my program
-   produced no answer".
-
-## Completeness per inventory
+## Open world with selective closure
 
 Open world does not mean "anything goes". Each FrameX case additionally
-declares **which inventories are complete**. Typically complete are: the
-component inventory, the type hierarchy, requirement groups and their
-membership, action types, and the resource inventory. A scenario therefore
-cannot hide another usable antenna.
+declares **which inventories are complete**, and a named closure declaration
+can complete one class, slot or method without closing the whole world.
+Typically complete are: the component inventory, the type hierarchy,
+requirement groups and their membership, action types, and the resource
+inventory. A scenario therefore cannot hide another usable antenna.
 
 Still potentially `unknown` are: capability, qualification, and inspection
 evidence. That split is what makes the starting snapshot interesting — the
 device list is fixed and fully known, while the condition of `reserve` is
 genuinely open:
 
-```prolog
+```framex
 // A complete inventory: these three devices are all there are.
 primary : DirectAntenna.
 reserve : DirectAntenna.
 relay : RelayTerminal.
 
-// Capability evidence: stated, hence true.
+// Supported evidence: the query is true.
 relay[health -> true].
 
-// Inspection evidence: explicitly negative, hence false.
+// Refuted under the closed-scope semantics: the query is false.
 primary[health -> false].
 
 // No health statement about reserve exists —
@@ -92,7 +93,7 @@ primary[health -> false].
 The orientation example shows `true`, a concrete value, and `unknown` side
 by side:
 
-```prolog
+```framex
 // Taxonomy and installation — stated facts.
 CommunicationDevice extends Component.
 DirectAntenna extends CommunicationDevice.
@@ -115,8 +116,18 @@ earlierInspection[outcome -> "pass"].
 ?- reserve[health -> true].
 ```
 
+Two further consequences:
+
+1. **An alias match establishes nothing.** Two objects may share a display
+   name (the `cars::jaguar` / `animals::jaguar` case), and asking about one in
+   place of the other answers `unknown` rather than guessing.
+2. **A missing output of your implementation is a defect**, not an encoding
+   of `unknown`. Distinguish "the engine answered `unknown`" from "my program
+   produced no answer".
+
 ## Rule of thumb
 
-> If you did not state it and cannot derive it, FrameX answers `unknown`.
-> If you need `false`, state the negative fact or close the specific
-> inventory it belongs to, never rely on silence!
+> Silence means `unknown` under `world open.` and `false` under
+> `world closed.`. A stored `false` is data, not negation. If you need a
+> logical `false` under an open world, close the specific class, slot or
+> method it belongs to — never rely on a stored value to do the negating.
