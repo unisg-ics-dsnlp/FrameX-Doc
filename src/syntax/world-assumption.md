@@ -72,6 +72,9 @@ device list is fixed and fully known, while the condition of `reserve` is
 genuinely open:
 
 ```framex
+// Open world with selective closure (see the last block).
+world open.
+
 // The device inventory is contractually complete:
 // these three devices are all there are.
 primary : DirectAntenna.
@@ -106,6 +109,9 @@ The orientation example shows `true`, a concrete value, and `unknown` side
 by side:
 
 ```framex
+// Open world: unasserted observations stay unknown.
+world open.
+
 // Taxonomy and installation — stated facts.
 CommunicationDevice extends Component.
 DirectAntenna extends CommunicationDevice.

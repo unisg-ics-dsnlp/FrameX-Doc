@@ -24,7 +24,7 @@ To get started using FrameX we recommend using the [FrameX-Workbench](https://fr
 
 1. Login to [framex.nlp-lab.ai](https://framex.nlp-lab.ai/). *If you dont have a user, please reach out to the Teaching Assistants.*
 2. Start the Workspace using the *Start Workspace* button on the top right.
-3. Create a new file using the *New file* button in the *FILES* tab on the left side of the screen. If its not visible, you may need to click *Show files* first to show the colapsed *FILES* section. **Important:** Make sure your generated file has a `.fx to the file name to create a compatible FrameX file to run.
+3. Create a new file using the *New file* button in the *FILES* tab on the left side of the screen and name it `quick-start.fx`. If its not visible, you may need to click *Show files* first to show the colapsed *FILES* section. 
 4. Write your FrameX F-Logic code in the created file. You can use the example from above to start tinkering. 
 5. Save the file and press *Run program* on the top right to evaluate the file.
 6. The result shows the logical answer (`true`); execution status is reported separately.
