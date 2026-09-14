@@ -230,11 +230,11 @@ expect unknown: dario[hasParent -> anna].
 ?- dario[hasCousin -> ?C].
 ```
 
-Run it with:
-
+To Run it, download the complete file and save it as family-tree.fx. Then run it with the FrameX-CLI:
 ```bash
 framex test family-tree.fx
 ```
+You can also put this example in the FrameX-UI and run it there. 
 
 All ten expectations should pass.
 
