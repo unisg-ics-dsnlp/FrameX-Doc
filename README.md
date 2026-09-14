@@ -11,8 +11,3 @@ mdbook serve --open
 ```
 
 Source pages are in `src/`, structure in `src/SUMMARY.md`.
-
-## Publish
-
-Push to `main` → `.github/workflows/deploy.yml` builds and deploys to Pages.
-One-time repo setup: Settings → Pages → Source: **GitHub Actions**. 
