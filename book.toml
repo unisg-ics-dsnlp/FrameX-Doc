@@ -1,0 +1,13 @@
+[book]
+authors = ["NLP-LAB by Prof. Siegfried Handschuh"]
+language = "en"
+src = "src"
+title = "FrameX-Doc"
+
+[build]
+build-dir = "book"
+
+[output.html]
+git-repository-url = "https://github.com/unisg-ics-dsnlp/FrameX-Doc"
+edit-url-template = "https://github.com/unisg-ics-dsnlp/FrameX-Doc/edit/main/src/{path}"
+site-url = "/FrameX-Doc/"
