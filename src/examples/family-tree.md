@@ -71,19 +71,18 @@ felix[hasParent -> anna].
 
 ## Step 4 — Derive siblings, brothers, and sisters
 
-A sibling shares a parent. Brothers and sisters add a class check:
+A sibling shares a parent. Brothers and sisters add a class check. The
+`?X != ?Y` guard excludes self-relations: without it, the sibling rule also
+matches a person with themselves (`bruno` shares a parent with `bruno`), and
+that self-match would propagate — `dario` would become his own cousin.
 
 ```prolog
-?X[hasSibling -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P].
-?X[hasBrother -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Man.
-?X[hasSister -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Woman.
+?X[hasSibling -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?X != ?Y.
+?X[hasBrother -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Man AND ?X != ?Y.
+?X[hasSister -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Woman AND ?X != ?Y.
 
 declare symmetric hasSibling.
 ```
-
-Note: as stated, the sibling rule also matches a person with themselves
-(`anna` shares a parent with `anna`). The queries and checks below always use
-distinct persons, so this does not affect any result here.
 
 ## Step 5 — Derive grandparents, uncles, and aunts
 
@@ -113,15 +112,18 @@ declare transitive ancestor.
 
 `declare inverse` means `bruno[hasChild -> dario]` follows from
 `dario[hasParent -> bruno]` with no extra rule. The two `ancestor` rules cover
-the direct case and the recursive case: `felix`'s ancestor `elena` is reached
-via `anna`.
+the direct case and the recursive case. Note the direction: the rule reads "A
+is an ancestor of D" (`?A[ancestor -> ?D]`), so `elena` is `felix`'s ancestor,
+reached via `anna` — never the other way round.
 
 ## Step 7 — Derive cousins
 
-Cousins are the children of siblings:
+Cousins are the children of siblings. The `?X != ?Y` guard keeps the
+relation strict: it excludes self-matches that the sibling rule would
+otherwise admit.
 
 ```prolog
-?X[hasCousin -> ?Y] <- ?X[hasParent -> ?PX] AND ?Y[hasParent -> ?PY] AND ?PX[hasSibling -> ?PY].
+?X[hasCousin -> ?Y] <- ?X[hasParent -> ?PX] AND ?Y[hasParent -> ?PY] AND ?PX[hasSibling -> ?PY] AND ?X != ?Y.
 
 declare symmetric hasCousin.
 ```
@@ -141,7 +143,7 @@ expect true: felix[hasUncle -> bruno].
 expect true: dario[hasAunt -> anna].
 expect true: dario[hasCousin -> felix].
 expect true: felix[hasCousin -> dario].
-expect true: felix[ancestor -> elena].
+expect true: elena[ancestor -> felix].
 expect true: bruno[hasChild -> dario].
 expect unknown: dario[hasParent -> anna].
 
@@ -150,9 +152,17 @@ expect unknown: dario[hasParent -> anna].
 ?- dario[hasCousin -> ?C].
 ```
 
-`dario[hasParent -> anna]` is `unknown`, not `false`: the world is open and no
-fact confirms or denies it. A missing statement is never treated as a negative
-fact.
+Two things to read carefully here. First, direction matters: the ancestor
+rule derives `?A[ancestor -> ?D]` ("A is an ancestor of D"), so the check is
+`elena[ancestor -> felix]`. The reversed form `felix[ancestor -> elena]`
+would ask whether Felix is Elena's ancestor — correctly answered `unknown`.
+
+Second, `dario[hasParent -> anna]` is `unknown`, not `false`. Under the open
+world, a question the program can neither support nor refute stays open. Do
+not confuse this with a stored `false` value such as `rob[hasJob -> false]`
+elsewhere: that is an ordinary asserted value about a property, not a
+logical negation of the statement asked here. FrameX keeps stored values and
+logical truth strictly apart.
 
 ## Complete file
 
@@ -186,11 +196,12 @@ bruno[hasParent -> elena].
 dario[hasParent -> bruno].
 felix[hasParent -> anna].
 
-// Step 4: siblings — two people sharing a parent;
+// Step 4: siblings — two distinct people sharing a parent;
 // brothers and sisters add a class check.
-?X[hasSibling -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P].
-?X[hasBrother -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Man.
-?X[hasSister -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Woman.
+// The ?X != ?Y guard excludes self-relations (and hence own cousins).
+?X[hasSibling -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?X != ?Y.
+?X[hasBrother -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Man AND ?X != ?Y.
+?X[hasSister -> ?Y] <- ?X[hasParent -> ?P] AND ?Y[hasParent -> ?P] AND ?Y : Woman AND ?X != ?Y.
 
 // Step 5: grandparents, uncles, aunts — one step up
 // through an intermediate object.
@@ -198,12 +209,14 @@ felix[hasParent -> anna].
 ?C[hasUncle -> ?U] <- ?C[hasParent -> ?P] AND ?P[hasBrother -> ?U].
 ?C[hasAunt -> ?A] <- ?C[hasParent -> ?P] AND ?P[hasSister -> ?A].
 
-// Step 6: ancestry — direct case plus recursion through an intermediate parent.
+// Step 6: ancestry — "A is an ancestor of D": direct case plus recursion
+// through an intermediate parent.
 ?A[ancestor -> ?D] <- ?D[hasParent -> ?A].
 ?A[ancestor -> ?D] <- ?D[hasParent -> ?P] AND ?A[ancestor -> ?P].
 
-// Step 7: cousins — children of siblings.
-?X[hasCousin -> ?Y] <- ?X[hasParent -> ?PX] AND ?Y[hasParent -> ?PY] AND ?PX[hasSibling -> ?PY].
+// Step 7: cousins — children of distinct siblings; the guard excludes
+// self-matches.
+?X[hasCousin -> ?Y] <- ?X[hasParent -> ?PX] AND ?Y[hasParent -> ?PY] AND ?PX[hasSibling -> ?PY] AND ?X != ?Y.
 
 // Property declarations — symmetry, inverse, and transitivity
 // the engine applies on top of the rules above.
@@ -213,6 +226,7 @@ declare inverse hasParent hasChild.
 declare transitive ancestor.
 
 // Step 8a: checks — what the engine must derive.
+// Note the ancestor direction: elena is felix's ancestor, not vice versa.
 expect true: anna : Person.
 expect true: dario[hasGrandparent -> elena].
 expect true: anna[hasSibling -> bruno].
@@ -220,7 +234,7 @@ expect true: felix[hasUncle -> bruno].
 expect true: dario[hasAunt -> anna].
 expect true: dario[hasCousin -> felix].
 expect true: felix[hasCousin -> dario].
-expect true: felix[ancestor -> elena].
+expect true: elena[ancestor -> felix].
 expect true: bruno[hasChild -> dario].
 expect unknown: dario[hasParent -> anna].
 
@@ -234,7 +248,7 @@ To Run it, download the complete file and save it as family-tree.fx. Then run it
 ```bash
 framex test family-tree.fx
 ```
-You can also put this example in the FrameX-UI and run it there. 
+You can also put this example in the FrameX-Workbench and run it there. 
 
 All ten expectations should pass.
 
@@ -245,3 +259,5 @@ All ten expectations should pass.
 - Add `expect true: elena[hasChild -> anna].` and explain which declaration
   makes it follow with no extra rule.
 - Add a second child for `anna` and check who becomes cousins with `dario`.
+- Remove one `?X != ?Y` guard and predict which self-relation reappears
+  (check with `?- dario[hasCousin -> ?C].`).

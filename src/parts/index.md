@@ -2,9 +2,9 @@
 
 FrameX has a small ecosystem of different tools and parts. Here is an overview of the parts:
 
-## FrameX-UI
+## FrameX-Workbench
 
-FrameX-UI is a webhosted version where one can quickly get started with FrameX. It allows to tinker around and learn the logic without installing a tool on your system.
+FrameX-Workbench is a webhosted version where one can quickly get started with FrameX. It allows to tinker around and learn the logic without installing a tool on your system.
 
 ## FrameX-CLI
 
