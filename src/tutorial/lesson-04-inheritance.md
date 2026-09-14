@@ -1,4 +1,4 @@
-# 4. Classes and inheritance
+# Classes and inheritance
 
 ```framex
 world open.

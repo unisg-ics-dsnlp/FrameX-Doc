@@ -1,4 +1,4 @@
-# 11. Ordered data and numeric conditions
+# Ordered data and numeric conditions
 
 ```framex
 world open.

@@ -1,4 +1,4 @@
-# 1. Your first object, rule and question
+# Your first object, rule and question
 
 ```framex
 world open.

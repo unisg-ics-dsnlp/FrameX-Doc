@@ -1,4 +1,4 @@
-# 8. Recursion and the fixed point
+# Recursion and the fixed point
 
 ```framex
 world open.

@@ -1,4 +1,4 @@
-# 6. Schemas and consistency checks
+# Schemas and consistency checks
 
 ```framex
 world open.

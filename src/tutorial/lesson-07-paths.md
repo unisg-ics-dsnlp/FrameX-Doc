@@ -1,4 +1,4 @@
-# 7. Navigate with visible joins
+# Navigate with visible joins
 
 ```framex
 world open.

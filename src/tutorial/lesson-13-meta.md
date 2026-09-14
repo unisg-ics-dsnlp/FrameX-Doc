@@ -1,4 +1,4 @@
-# 13. Inspect the object model
+# Inspect the object model
 
 ```framex
 world open.

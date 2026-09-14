@@ -1,4 +1,4 @@
-# 2. A small family knowledge graph
+# A small family knowledge graph
 
 ```framex
 world open.

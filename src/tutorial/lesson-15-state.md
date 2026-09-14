@@ -1,4 +1,4 @@
-# 15. From knowledge to controlled agents
+# From knowledge to controlled agents
 
 ```framex
 world open.

@@ -1,4 +1,4 @@
-# 5. Parameterized methods are relations
+# Parameterized methods are relations
 
 ```framex
 world open.

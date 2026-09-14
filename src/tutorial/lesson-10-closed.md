@@ -1,4 +1,4 @@
-# 10. Close only what is complete
+# Close only what is complete
 
 ```framex
 world open.

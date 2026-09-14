@@ -1,4 +1,4 @@
-# 3. Properties, identity and multiple values
+# Properties, identity and multiple values
 
 ```framex
 world open.

@@ -1,4 +1,4 @@
-# 14. Provenance: a reason is not a probability
+# Provenance: a reason is not a probability
 
 ```framex
 world open.

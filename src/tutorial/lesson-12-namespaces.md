@@ -1,4 +1,4 @@
-# 12. Namespaces and modules are different
+# Namespaces and modules are different
 
 ```framex
 world open.

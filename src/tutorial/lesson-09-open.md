@@ -1,4 +1,4 @@
-# 9. Missing evidence: open and closed worlds
+# Missing evidence: open and closed worlds
 
 ```framex
 world open.
