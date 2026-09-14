@@ -4,7 +4,7 @@ To quickly get started with FrameX we recommend using FrameX-Workbench. This all
 
 ## The example
 
-Copy this complete program — three statements: a fact, a rule, and a question:
+Copy this complete program — four statements, including the world declaration: a world assumption, a fact, a rule, and a question:
 
 ```framex
 world open.
@@ -33,12 +33,12 @@ To get started using FrameX we recommend using the [FrameX-Workbench](https://fr
 
 As an alternative to the [FrameX-Workbench](https://framex.nlp-lab.ai/) you can also run and validate FrameX F-Script using FrameX-CLI locally on your machine. The CLI will be available soon on GitHub.
 
-1. Save the example as `quick-start.fx`.
+1. Name the file `quick-start.fx`.
 2. Run it from a terminal:
 ```bash
 framex run quick-start.fx
 ```
-3. Check the answer with the built-in test runner:
+3. Add `expect true: socrates:Mortal.` to your file, then run the test:
 ```bash
 framex test quick-start.fx
 ```

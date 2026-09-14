@@ -72,21 +72,33 @@ device list is fixed and fully known, while the condition of `reserve` is
 genuinely open:
 
 ```framex
-// A complete inventory: these three devices are all there are.
+// The device inventory is contractually complete:
+// these three devices are all there are.
 primary : DirectAntenna.
 reserve : DirectAntenna.
 relay : RelayTerminal.
 
 // Supported evidence: the query is true.
 relay[health -> true].
+?- relay[health -> true].
 
-// Refuted under the closed-scope semantics: the query is false.
+// The recorded health value is false.
+// This does not itself negate health -> true.
 primary[health -> false].
 
 // No health statement about reserve exists —
 // under world open. this is unknown, not false.
 ?- reserve[health -> true].
+
+// Named closure: the inspected slot is declared complete,
+// so a missing value here is false instead of unknown.
+closed slot inspected.
+primary[inspected -> true].
+?- reserve[inspected -> true].
 ```
+
+The last query answers `false`: with the slot closed, absence counts as
+refutation — the one case where silence legitimately means `false`.
 
 ## The three answers in one file
 
