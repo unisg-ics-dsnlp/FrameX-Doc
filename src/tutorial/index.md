@@ -49,7 +49,3 @@ solutions to assessed tasks.
 - [15. From knowledge to controlled agents](./lesson-15-state.md)
 - [Quick reference: choosing the right construct](./reference.md)
 - [Practice and verification](./practice.md)
-
-> Source: *FrameX: A Practical F-Logic Tutorial* (September 2026,
-> FrameX 0.4.2). Listings are complete standalone programs from
-> `examples/flogic-tutorial/`; run them with `framex run <file>.fx`.
