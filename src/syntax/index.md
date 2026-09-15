@@ -1,6 +1,6 @@
 # FrameX Syntax
 
-> TODO: Overview of the FrameX syntax.
+In the following chapters, the FrameX Syntax will be explained:
 
 - [World Assumption](./world-assumption.md)
 - [Variables](./variables.md)
