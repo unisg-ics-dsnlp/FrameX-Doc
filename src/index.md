@@ -2,12 +2,12 @@
 
 This is the official Documentation of FrameX - a tool build by the NLP-LAB for the Hybrid AI Course at the HSG. FrameX is a domain-neutral frame-logic engine that derives knowledge from facts and rules, answers queries and explains its reasoning.
 
-FrameX has the following parts:
-- [FrameX-Workbench](./parts/index.md#framex-workbench): A Web-Interface to use FrameX and its logic engine
-- [FrameX-CLI](./parts/index.md#framex-cli): A interactive CLI interface that lets you use FrameX locally on your device.
-- [Hackable-FrameX](./parts/index.md#hackable-framex): The core FrameX-Engine, designed to be used in Hackathons and other projects.
-- [FrameX-Engine](./parts/index.md#framex-engine): The core frameX engine that drives all the other parts.
-- [FrameX-Doc](./parts/index.md#framex-doc): The Documentation that you are currently reading.
+> [!TIP]
+> To get started, we recommend to start at [QuickStart](./quick-start.md)!
+
+![HSG NLP Logo](./images/HSG_NLP_Logo%20Classic.png)
+
+---
 
 ## FrameX Syntax
 
@@ -51,3 +51,5 @@ FrameX has the following parts:
 - [15. From knowledge to controlled agents](./tutorial/lesson-15-state.md)
 - [Quick reference](./tutorial/reference.md)
 - [Practice and verification](./tutorial/practice.md)
+
+---
