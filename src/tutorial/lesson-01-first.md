@@ -26,7 +26,7 @@ With FrameX on your path, from the repository root:
 framex run examples/flogic-tutorial/01-first.fx
 ```
 
-In Studio, open the file and choose *Run program*. The query is inside the
+In FrameX-Workbench, open the file and choose *Run program*. The query is inside the
 file. The result contains the logical answer; execution status is a separate
 success/failure indicator.
 
