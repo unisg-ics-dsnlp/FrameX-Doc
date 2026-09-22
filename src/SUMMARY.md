@@ -25,6 +25,12 @@
 
 ---
 
+- [Python API](./python/index.md)
+  - [Installation and Quick Start](./python/installation.md)
+  - [Client](./python/client.md)
+
+---
+
 - [Examples](./examples/index.md)
   - [Family Tree](./examples/family-tree.md)
 

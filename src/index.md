@@ -27,6 +27,12 @@ This is the official Documentation of FrameX - a tool build by the NLP-LAB for t
 - [Expectations](./syntax/expectations.md)
 - [Truth Values](./syntax/truth-values.md)
 
+## Python API
+
+- [Python API overview](./python/index.md)
+- [Installation and Quick Start](./python/installation.md)
+- [Client](./python/client.md)
+
 ## Examples
 
 - [Family Tree](./examples/family-tree.md)
