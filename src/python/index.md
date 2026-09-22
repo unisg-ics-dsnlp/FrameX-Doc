@@ -13,7 +13,7 @@ from framex import Client
 with Client() as client:
     client.load("world open.\n socrates:Human.\n ?X:Mortal <- ?X:Human.")
     result = client.query("?- socrates:Mortal.")
-    print(result)  # {'status': 'true', 'bindings': []}
+    print(result)  # {'status': 'true'}
 ```
 
 In the following chapters, the Python API will be explained:

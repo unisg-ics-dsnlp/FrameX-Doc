@@ -58,4 +58,16 @@ This is the official Documentation of FrameX - a tool build by the NLP-LAB for t
 - [Quick reference](./tutorial/reference.md)
 - [Practice and verification](./tutorial/practice.md)
 
+## Python API Exercise
+
+- [Exercise overview](./python-exercise/index.md)
+- [Task 1: Connect and Ask](./python-exercise/task-01-connect.md)
+- [Task 2: Reading the Answer](./python-exercise/task-02-answers.md)
+- [Task 3: Growing the Knowledge Base](./python-exercise/task-03-grow.md)
+- [Task 4: Making the Engine Explain Itself](./python-exercise/task-04-explain.md)
+- [Task 5: Revising Safely](./python-exercise/task-05-revise.md)
+- [Task 6: Worlds and Validation](./python-exercise/task-06-worlds.md)
+- [Task 7: When Things Go Wrong](./python-exercise/task-07-failure.md)
+- [Task 8: Solution and What Comes Next](./python-exercise/task-08-wrap-up.md)
+
 ---

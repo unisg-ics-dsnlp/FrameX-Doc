@@ -24,7 +24,7 @@ with Client() as client:
 | `load(source)` | Load a full program (replaces current state) |
 | `add(*, source)` | Incremental add of facts/rules |
 | `retract(*, fact)` | Withdraw a ground fact |
-| `query(query)` | F-Logic query, returns `{'status', 'bindings'}` |
+| `query(query)` | F-Logic query, returns a dict with a `status` |
 | `explain(fact)` | Provenance chain for a fact |
 | `world(mode)` | Switch `open` / `closed` world |
 | `validate()` | Run constraint checks |
@@ -37,9 +37,17 @@ with Client() as client:
 | `rdf_export(*, format, selection)` | Export as RDF |
 | `save_replay(path)` | Write session transcript to file |
 
-`query` returns a dictionary with a `status` — `true`, `false` or `unknown`,
-see [Truth Values](../syntax/truth-values.md) — and the `bindings` found for
-any variables in the goal.
+`query` returns a dictionary whose `status` is `true`, `false` or `unknown`
+(see [Truth Values](../syntax/truth-values.md)), or `bindings` when the goal
+contained variables. The `bindings` key is present only in that last case:
+
+```text
+{'status': 'true'}
+{'status': 'bindings', 'bindings': [{'G': 'elena'}]}
+```
+
+So read `status` before reaching for `bindings`. Each binding is one match, and
+its keys are the variable names without the `?` marker.
 
 `world` switches the [World Assumption](../syntax/world-assumption.md) of the
 running session, and `validate` runs the declared

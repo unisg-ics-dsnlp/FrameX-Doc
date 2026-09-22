@@ -1,0 +1,71 @@
+/* Collapsible solution blocks for the Python API Exercise section.
+   Uses mdBook's own theme variables so the block follows light, rust,
+   coal, navy and ayu without a per-theme rule. */
+
+details.solution {
+  border: 1px solid var(--quote-border, #d6d6d6);
+  border-radius: 6px;
+  margin: 1em 0;
+  background: var(--bg);
+}
+
+details.solution > summary {
+  cursor: pointer;
+  padding: 0.6em 0.9em;
+  font-weight: 600;
+  color: var(--fg);
+  background: var(--quote-bg, #f6f6f6);
+  border-radius: 6px;
+  /* Replace the default disclosure triangle with our own marker. */
+  list-style: none;
+  user-select: none;
+}
+
+details.solution > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.solution > summary::before {
+  content: "\25B8"; /* right-pointing triangle */
+  display: inline-block;
+  width: 1em;
+  color: var(--links, #4183c4);
+  transition: transform 0.15s ease;
+}
+
+details.solution[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+details.solution[open] > summary {
+  border-bottom: 1px solid var(--quote-border, #d6d6d6);
+  border-radius: 6px 6px 0 0;
+}
+
+details.solution > summary:hover {
+  color: var(--links, #4183c4);
+}
+
+/* Breathing room for the content, without doubling the code block's own
+   margin at the edges of the box. */
+details.solution > *:not(summary) {
+  margin-left: 0.9em;
+  margin-right: 0.9em;
+}
+
+details.solution > pre:last-child,
+details.solution > p:last-child {
+  margin-bottom: 0.9em;
+}
+
+/* Best effort for printing and PDF export: browsers differ on whether a
+   closed <details> can be forced open, so treat this as a nicety. */
+@media print {
+  details.solution > summary {
+    display: none;
+  }
+
+  details.solution > *:not(summary) {
+    display: block !important;
+  }
+}

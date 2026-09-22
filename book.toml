@@ -11,5 +11,5 @@ build-dir = "book"
 git-repository-url = "https://github.com/unisg-ics-dsnlp/FrameX-Doc"
 edit-url-template = "https://github.com/unisg-ics-dsnlp/FrameX-Doc/edit/main/src/{path}"
 site-url = "/FrameX-Doc/"
-additional-css = ["mermaid/mermaid.css"]
+additional-css = ["mermaid/mermaid.css", "solution/solution.css"]
 additional-js = ["mermaid/mermaid-init.js", "highlight/framex-highlight.js"]
