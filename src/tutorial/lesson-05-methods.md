@@ -24,7 +24,9 @@ results.
 
 Birth objects are useful when a relationship itself needs a date, order,
 source or uncertainty annotation. Give each observation a stable ID. FrameX
-does not create new IDs using object-generating function terms.
+can also use structured identifiers such as `birth(parent, child)`, but this
+example uses explicit names to keep the evidence easy to inspect. Function
+terms do not execute external code; recursive term generation needs bounds.
 
 ## Choosing a representation
 

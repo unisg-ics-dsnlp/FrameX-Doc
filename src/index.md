@@ -1,9 +1,20 @@
 # FrameX-Doc
 
-This is the official Documentation of FrameX - a tool build by the NLP-LAB for the Hybrid AI Course at the HSG. FrameX is a domain-neutral frame-logic engine that derives knowledge from facts and rules, answers queries and explains its reasoning.
+FrameX is an offline, domain-neutral frame-logic engine with a Python host
+for tools and language models, developed by the Chair of Data Science and
+Natural Language Processing at the University of St. Gallen. It derives
+conclusions from facts and rules, answers queries and explains its reasoning.
+
+In a hybrid system, models read, phrase and propose; rules decide which
+evidence counts and what may happen next. This documentation covers the
+public [FrameX-Core](https://gitlab.com/ds-unisg/framex-core) **0.4.4** export
+and the coupling patterns introduced in Hybrid AI Studio EX06.
 
 > [!TIP]
-> To get started, we recommend to start at [QuickStart](./quick-start.md)!
+> Start with [Quick Start](./quick-start.md), then the
+> [language tutorial](./tutorial/index.md). For language-model integration,
+> read [Hybrid AI with FrameX](./hybrid/index.md) and
+> [Tool Calling](./python/tool-calling.md).
 
 ![HSG NLP Logo](./images/HSG_NLP_Logo%20Classic.png)
 
@@ -19,6 +30,7 @@ This is the official Documentation of FrameX - a tool build by the NLP-LAB for t
 - [Attribute Signatures](./syntax/attribute-signatures.md)
 - [Facts](./syntax/facts.md)
 - [Rules](./syntax/rules.md)
+- [External Requests](./syntax/external-requests.md)
 - [Property Declarations](./syntax/property-declarations.md)
 - [Namespaces and Identity](./syntax/namespaces-identity.md)
 - [Paths](./syntax/paths.md)
@@ -31,11 +43,25 @@ This is the official Documentation of FrameX - a tool build by the NLP-LAB for t
 
 - [Python API overview](./python/index.md)
 - [Installation and Quick Start](./python/installation.md)
+- [Add FrameX to a uv Project](./python/uv-project.md)
 - [Client](./python/client.md)
+- [Tool Calling](./python/tool-calling.md)
+- [Tool Reference](./python/tools.md)
+- [Model Settings and Replay](./python/model-settings.md)
+- [Dialogue and Interviews](./python/dialogue.md)
+
+## Hybrid AI with FrameX
+
+- [Overview](./hybrid/index.md)
+- [Foundations: Invariants and Moves](./hybrid/foundations.md)
+- [Thirteen Coupling Patterns](./hybrid/patterns.md)
+- [Choosing and Combining Patterns](./hybrid/choosing.md)
+- [Sources and Version Scope](./hybrid/sources.md)
 
 ## Examples
 
 - [Family Tree](./examples/family-tree.md)
+- [Grounded Extraction](./examples/grounded-extraction.md)
 
 ## Tutorial
 

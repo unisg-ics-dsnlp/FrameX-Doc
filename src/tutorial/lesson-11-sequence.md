@@ -24,8 +24,9 @@ The next edge describes an order. Merely asserting it does not execute a
 step, consume a token or prevent two steps from running. An external
 executor must respect the permissions and transitions derived by the rules.
 
-Use rules to compare values that are already available. Put parsing, numeric
-computation and external access into explicit external adapters with
+Use rules to compare values that are already available. FrameX 0.4.4 also
+supports arithmetic bindings such as `?Next := ?Position + 1` once the input
+is bound. Parsing and external access belong in explicit adapters with
 recorded inputs and outputs. Aggregates are outside this core teaching
 profile.
 

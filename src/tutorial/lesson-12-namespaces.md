@@ -2,13 +2,13 @@
 
 ```framex
 world open.
-prefix family = "urn:family:".
-prefix alias = "urn:family:".
-prefix archive = "urn:archive:".
-family::isaac[label -> "Isaac"].
-archive::isaac[label -> "Isaac"].
-?- alias::isaac[label -> "Isaac"].
-expect true: family::isaac != archive::isaac.
+:- prefix family = "urn:family:".
+:- prefix alias = "urn:family:".
+:- prefix archive = "urn:archive:".
+family#isaac[label -> "Isaac"].
+archive#isaac[label -> "Isaac"].
+?- alias#isaac[label -> "Isaac"].
+expect true: family#isaac != archive#isaac.
 ```
 
 The alias resolves to the same expanded identity as family, so its query is
@@ -31,5 +31,5 @@ qualification as a substitute for context.
 
 ## Try it
 
-Give `archive::isaac` a different label. Why is the family query unaffected?
+Give `archive#isaac` a different label. Why is the family query unaffected?
 What would an identity-resolution decision need beyond matching labels?

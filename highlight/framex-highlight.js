@@ -10,7 +10,8 @@
       keywords: {
         keyword:
           'world open closed prefix declare subproperty inverse transitive symmetric ' +
-          'expect external using extends AND OR',
+          'expect external using with extends annotate source time weight ' +
+          'slot method class required functional in module import AND OR NOT',
         literal: 'true false unknown'
       },
       contains: [
@@ -18,6 +19,12 @@
         hljs.COMMENT('//', '$'),
         // "Double-quoted strings".
         hljs.QUOTE_STRING_MODE,
+        // Exact identifiers and external request objects.
+        {
+          className: 'symbol',
+          begin: /`/,
+          end: /`/
+        },
         // Numbers such as revision 4.
         hljs.NUMBER_MODE,
         // Variables: ?Name, ?Device, ?Revision.
@@ -30,10 +37,10 @@
           className: 'operator',
           begin: /\?-/
         },
-        // Rule, slot, namespace and path operators: <- -> :: :
+        // Rules, slots, subclassing, arithmetic bindings and namespaces.
         {
           className: 'operator',
-          begin: /<-?|->|::/
+          begin: /<-|->|::|:=|!=|<=|>=|[<>:#]/
         },
         // Classes are Capitalized CamelCase by convention: Person, DirectAntenna.
         // (Requires a lowercase second letter so AND/OR stay keywords.)

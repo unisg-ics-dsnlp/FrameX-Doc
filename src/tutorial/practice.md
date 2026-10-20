@@ -20,11 +20,16 @@ connecting a language model.
 ## Reproduce the executable checks
 
 ```bash
-python3 scripts/test-flogic-tutorial.py --binary /path/to/framex
-python3 scripts/check-modern-syntax.py
+python3 scripts/check-examples.py --binary /path/to/framex
 ```
 
-The tutorial checker runs every listing, checks its expected answer rows,
-runs its expectations and validates the schema example. It writes a report
-with engine identity and source hashes. Query outputs are checked
-independently of the expectation statements in the examples.
+Run this from the FrameX-Doc repository after installing the engine and
+Python package. The checker verifies tutorial query rows and expectations,
+the complete family program, the namespace and external-request examples,
+the extraction receipt scenarios, and the Python exercise outputs. It also
+runs the tool-query episode and scripted dialogue without a model.
+
+For the schema lesson, experiment with `framex validate` on a saved copy as
+described in [Lesson 6](./lesson-06-schema.md). The new
+[grounded extraction example](../examples/grounded-extraction.md) includes
+downloadable receipts for valid evidence, refused evidence and a failed call.

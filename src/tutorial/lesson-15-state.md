@@ -30,6 +30,10 @@ hiding domain policy in a convenience function.
 External declarations need the documented tool host; an offline rule run is
 not evidence of a real model call.
 
+Continue with [Tool Calling](../python/tool-calling.md) for a runnable host
+episode, or [Hybrid AI with FrameX](../hybrid/index.md) for the invariants
+and patterns used to design the boundary between models and rules.
+
 ## Try it
 
 Change the current revision to r1 and predict the permission. Then explain

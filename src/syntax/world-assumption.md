@@ -137,7 +137,7 @@ earlierInspection[outcome -> "pass"].
 Two further consequences:
 
 1. **An alias match establishes nothing.** Two objects may share a display
-   name (the `cars::jaguar` / `animals::jaguar` case), and asking about one in
+   name (the `cars#jaguar` / `animals#jaguar` case), and asking about one in
    place of the other answers `unknown` rather than guessing.
 2. **A missing output of your implementation is a defect**, not an encoding
    of `unknown`. Distinguish "the engine answered `unknown`" from "my program

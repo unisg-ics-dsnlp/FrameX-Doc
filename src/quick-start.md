@@ -31,7 +31,10 @@ To get started using FrameX we recommend using the [FrameX-Workbench](https://fr
 
 ## Option 2: FrameX-CLI
 
-As an alternative to the [FrameX-Workbench](https://framex.nlp-lab.ai/) you can also run and validate FrameX F-Script using FrameX-CLI locally on your machine. The CLI will be available soon on GitHub.
+The engine and Python host are available in the public
+[FrameX-Core repository](https://gitlab.com/ds-unisg/framex-core). Follow
+[Installation and Quick Start](./python/installation.md) to build the engine
+and put `framex` on your `PATH`. You can then run and test `.fx` files locally.
 
 1. Name the file `quick-start.fx`.
 2. Run it from a terminal:
@@ -46,4 +49,7 @@ framex test quick-start.fx
 ## Next Steps
 Congrats! You have created and run your first FrameX program. 🎉🎉🎉 
 
-To go deeper in the 🐇-hole and learn more, we recommend doing the [Tutorial](./tutorial/index.md).
+Continue with the [Tutorial](./tutorial/index.md) to learn the language, or
+the [Python API Exercise](./python-exercise/index.md) to drive a persistent
+session. To connect models and tools, read
+[Hybrid AI with FrameX](./hybrid/index.md) and [Tool Calling](./python/tool-calling.md).

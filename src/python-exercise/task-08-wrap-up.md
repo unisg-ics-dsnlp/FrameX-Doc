@@ -161,9 +161,13 @@ switch the world assumption, and keep a record of everything you sent. The
 the ones this exercise did not use — `compare`, `retract_source`, `rdf_import`
 and `rdf_export`.
 
-Beyond the core client the framework goes further: an external-tool host where
-FrameX rules decide what to fetch or call and Python executes it, helpers that
-turn a natural-language question into a query, and a coding harness for
-automated code modification under a policy the engine enforces.
+Continue with [Tool Calling](../python/tool-calling.md): rules derive a
+request, Python runs a registered tool, and its receipt returns to the rules.
+The [Grounded Extraction](../examples/grounded-extraction.md) example adds
+evidence-based acceptance and offline failure tests.
 
-Those are not documented here yet. More tasks will follow.
+The [hybrid pattern guide](../hybrid/patterns.md) describes further designs,
+including query translation and candidate-rule checking. The public export
+has a smaller scope than the development framework; consult
+[Sources and Version Scope](../hybrid/sources.md) before using a component
+from the handbook.

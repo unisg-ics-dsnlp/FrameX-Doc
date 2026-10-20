@@ -11,5 +11,5 @@ expect true: rob[hasUncle -> john].
 expect true: rob[hasParent -> ?FxValue1] AND ?FxValue1[hasBrother -> john].
 
 // Same display name, distinct objects: unknown, not false.
-expect unknown: cars::jaguar : animals::Animal.
+expect unknown: cars#jaguar : animals#Animal.
 ```

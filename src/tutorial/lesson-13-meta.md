@@ -4,7 +4,7 @@
 world open.
 isaac:Person[father -> abraham; label -> "Isaac"].
 ?- isaac[?Property -> ?Value].
-?- isaac[frame::memberOf -> ?Class].
+?- isaac[frame#memberOf -> ?Class].
 expect true: isaac[father -> abraham].
 ```
 
@@ -17,8 +17,9 @@ FrameX's reserved metadata properties provide explicit access to supported
 structural information. They allow useful meta-queries while retaining a
 bounded language.
 
-Do not replace the second query with a variable after the class colon. That
-is not the supported class-introspection abbreviation.
+FrameX 0.4.4 also supports class variables: `?- isaac:?Class.` asks for
+membership directly. The reserved `frame#memberOf` view keeps the metadata
+relationship explicit in this example.
 
 Meta-queries help explain what was loaded, inspect schemas, and build
 teaching tools. A variable property name makes dependency analysis less

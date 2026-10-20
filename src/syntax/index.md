@@ -10,6 +10,7 @@ In the following chapters, the FrameX Syntax will be explained:
 - [Attribute Signatures](./attribute-signatures.md)
 - [Facts](./facts.md)
 - [Rules](./rules.md)
+- [External Requests](./external-requests.md)
 - [Property Declarations](./property-declarations.md)
 - [Namespaces and Identity](./namespaces-identity.md)
 - [Paths](./paths.md)

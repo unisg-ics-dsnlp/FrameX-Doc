@@ -20,10 +20,10 @@ implication is directional. Nor does asking the question add a fact.
 
 ## Run it
 
-With FrameX on your path, from the repository root:
+With FrameX on your path, save the listing as `first.fx` and run:
 
 ```bash
-framex run examples/flogic-tutorial/01-first.fx
+framex run first.fx
 ```
 
 In FrameX-Workbench, open the file and choose *Run program*. The query is inside the

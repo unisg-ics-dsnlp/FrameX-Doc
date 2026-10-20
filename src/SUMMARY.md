@@ -15,6 +15,7 @@
   - [Attribute Signatures](./syntax/attribute-signatures.md)
   - [Facts](./syntax/facts.md)
   - [Rules](./syntax/rules.md)
+  - [External Requests](./syntax/external-requests.md)
   - [Property Declarations](./syntax/property-declarations.md)
   - [Namespaces and Identity](./syntax/namespaces-identity.md)
   - [Paths](./syntax/paths.md)
@@ -27,12 +28,26 @@
 
 - [Python API](./python/index.md)
   - [Installation and Quick Start](./python/installation.md)
+  - [Add FrameX to a uv Project](./python/uv-project.md)
   - [Client](./python/client.md)
+  - [Tool Calling](./python/tool-calling.md)
+  - [Tool Reference](./python/tools.md)
+  - [Model Settings and Replay](./python/model-settings.md)
+  - [Dialogue and Interviews](./python/dialogue.md)
+
+---
+
+- [Hybrid AI with FrameX](./hybrid/index.md)
+  - [Foundations: Invariants and Moves](./hybrid/foundations.md)
+  - [Thirteen Coupling Patterns](./hybrid/patterns.md)
+  - [Choosing and Combining Patterns](./hybrid/choosing.md)
+  - [Sources and Version Scope](./hybrid/sources.md)
 
 ---
 
 - [Examples](./examples/index.md)
   - [Family Tree](./examples/family-tree.md)
+  - [Grounded Extraction](./examples/grounded-extraction.md)
 
 ---
 
